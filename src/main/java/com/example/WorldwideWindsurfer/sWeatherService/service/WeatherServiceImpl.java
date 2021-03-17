@@ -119,15 +119,15 @@ public class WeatherServiceImpl implements WeatherService {
 
         for (ResponseCity responseCity : list) {
             /*
-             * if temp != <5, 35> AND wind_speed != <5, 18>
+             * if temp = <5, 35> AND wind_speed = <5, 18>
              * */
-            if ((responseCity.getTemp().compareTo(new BigDecimal(5)) < 0
+            if ((responseCity.getTemp().compareTo(new BigDecimal(5)) >= 0
                     ||
-                    responseCity.getTemp().compareTo(new BigDecimal(35)) > 0)
+                    responseCity.getTemp().compareTo(new BigDecimal(35)) <= 0)
                     &&
-                    (responseCity.getWind_spd().compareTo(new BigDecimal(5)) < 0
+                    (responseCity.getWind_spd().compareTo(new BigDecimal(5)) >= 0
                             ||
-                            responseCity.getWind_spd().compareTo(new BigDecimal(18)) > 0)) {
+                            responseCity.getWind_spd().compareTo(new BigDecimal(18)) <= 0)) {
 
                 filteredMap.get(true).add(responseCity);
             } else {
